@@ -1,0 +1,84 @@
+# Gitleaks configuration for SIRINX / GhostClaw defensive secret recon
+# Strictly for own assets only (ton36475-lgtm)
+
+title = "SIRINX Redteam Secret Recon Rules"
+
+[extend]
+# Use default rules + custom
+
+[[rules]]
+id = "openai-api-key"
+description = "OpenAI API Key"
+regex = '''sk-[a-zA-Z0-9]{20,}T3BlbkFJ[a-zA-Z0-9]{20,}'''
+entropy = 3.5
+keywords = ["sk-", "openai"]
+
+[[rules]]
+id = "openai-api-key-generic"
+description = "Generic OpenAI-style key"
+regex = '''sk-[a-zA-Z0-9]{48,}'''
+entropy = 3.8
+keywords = ["sk-"]
+
+[[rules]]
+id = "anthropic-api-key"
+description = "Anthropic API Key"
+regex = '''sk-ant-[a-zA-Z0-9\-]{80,}'''
+entropy = 3.5
+keywords = ["sk-ant-", "anthropic"]
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
+entropy = 3.0
+keywords = ["AKIA", "ASIA"]
+
+[[rules]]
+id = "aws-secret-key"
+description = "AWS Secret Access Key"
+regex = '''(?i)aws(.{0,20})?(?-i)['\"][0-9a-zA-Z\/+]{40}['\"]'''
+entropy = 3.5
+
+[[rules]]
+id = "cloudflare-api-token"
+description = "Cloudflare API Token"
+regex = '''(?i)(cloudflare|cf[_-]?api[_-]?token|CF_API_TOKEN)\s*[:=]\s*['\"]?[a-zA-Z0-9_-]{37}['\"]?'''
+entropy = 3.5
+keywords = ["cloudflare", "cf_api", "CF_API_TOKEN"]
+
+[[rules]]
+id = "supabase-service-role"
+description = "Supabase service_role key"
+regex = '''eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.([a-zA-Z0-9_-]*)'''
+entropy = 3.5
+keywords = ["service_role", "supabase"]
+
+[[rules]]
+id = "jwt-secret"
+description = "JWT / signing secret"
+regex = '''(?i)(jwt[_-]?secret|signing[_-]?key|secret[_-]?key)\s*[:=]\s*['\"]?[a-zA-Z0-9+/=]{32,}['\"]?'''
+entropy = 3.0
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key assignment"
+regex = '''(?i)(api[_-]?key|apikey|access[_-]?token|auth[_-]?token)\s*[:=]\s*['\"]?[a-zA-Z0-9_\-]{20,}['\"]?'''
+entropy = 3.5
+
+[allowlist]
+description = "Allowlist for known placeholders and examples"
+paths = [
+  '''(.*?)(test|example|sample|dummy|fixture|mock)(.*?)''',
+  '''\.env\.example$''',
+  '''\.env\.sample$''',
+  '''README\.md$''',
+  '''docs/'''
+]
+regexes = [
+  '''your-openai-api-key''',
+  '''sk-xxxxxxxx''',
+  '''REPLACE_ME''',
+  '''example_key''',
+  '''dummy_token'''
+]
