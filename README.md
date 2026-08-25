@@ -1,109 +1,95 @@
-# SIRINX Redteam Secret Recon — Operational Package
+# SIRINX / GhostClaw – Redteam Secret Recon System
 
-**Status**: Ready for GhostClaw / SIRINX agent swarm deployment  
-**Scope**: Own assets only (`ton36475-lgtm` org/user + controlled infra)  
-**Safety**: Dry-run default · Human approval gates · No third-party key harvesting
+**Defensive-only automated secret & API-key reconnaissance for owned assets.**
+
+This package implements the `redteam-secret-recon` skill as a complete, production-ready system for the SIRINX / OZ-CORP / GhostClaw agentic environment.
+
+> **Core Safety Rule (Non-Negotiable)**  
+> Scan and act **only** on repositories, files, environments and infrastructure owned or controlled by the operator (`ton36475-lgtm` org/user, local Mac mini / Windows worker, Cloudflare accounts under SIRINX, Supabase projects of the operator).  
+> **Never** search public GitHub or the open web for the purpose of obtaining usable third-party API keys.
 
 ## Quick Start
 
-### 1. Enable GitHub Native Secret Scanning (Recommended First)
-
-On every owned repository:
-
-- Settings → Code security and analysis → Enable **Secret scanning**
-- Enable **Push protection**
-- (Optional) Enable **Secret scanning validity checks**
-
-Then list current alerts:
-
 ```bash
-# Via connected tools or gh CLI
-gh api repos/{owner}/{repo}/secret-scanning/alerts
+# 1. Local scan (requires gitleaks)
+./scripts/scan-wrapper.sh /path/to/your/repo
+
+# 2. Install GitHub Actions workflow into any owned repo
+cp .github/workflows/secret-scan.yml <repo>/.github/workflows/secret-scan.yml
+# or use the copy in scripts/
+
+# 3. Enable native GitHub Secret Scanning + Push Protection on the repo
+
+# 4. Deploy Supabase schema (see supabase/)
+# 5. Import n8n workflow (see n8n/)
+# 6. Optional Terraform for infra-as-code enablement (see terraform/)
 ```
 
-### 2. Deploy CI Workflow
+## Package Contents
 
-Copy `scripts/github-actions-secret-scan.yml` → `.github/workflows/secret-scan.yml`  
-Copy `scripts/gitleaks.toml` → `.gitleaks.toml` (or keep in skill path)
-
-Push to trigger first scan. Critical findings auto-open Issues labeled `security,secret-recon,priority:high`.
-
-### 3. Local / Mac mini / Windows Worker Scan
-
-```bash
-# Install gitleaks if needed
-brew install gitleaks   # or go install github.com/gitleaks/gitleaks/v8@latest
-
-# Scan current directory (working tree)
-./scripts/scan-wrapper.sh .
-
-# Full git history
-./scripts/scan-wrapper.sh /path/to/repo --full-history
+```
+sirinx-secret-recon/
+├── README.md
+├── ARCHITECTURE.md
+├── docs/
+│   └── RUNBOOK.md
+├── scripts/
+│   ├── gitleaks.toml
+│   ├── scan-wrapper.sh
+│   └── install-pre-commit.sh
+├── .github/workflows/secret-scan.yml
+├── terraform/
+├── n8n/
+├── supabase/
+├── dashboard/
+└── references/
 ```
 
-Reports land in `/tmp/secret-recon-reports/` (JSON + SARIF, redacted).
+## Architecture Summary
 
-### 4. Feed into L2 + GhostClaw
+- **L1 Perception / Scanner Agents**  
+  GitHub native secret scanning, Gitleaks/TruffleHog local + CI, n8n exports, Cloudflare bindings, Terraform state.
 
-- JSON findings → OmniRoute classification agent (prompt uses severity-matrix).
-- Critical/High → create GhostClaw task or a2a dispatch.
-- Dashboard module (see `dashboard/`) surfaces status inside Pixel AI Office.
+- **L2 Analysis Agents**  
+  Multi-LLM classification (true/false positive, severity) via OmniRoute / model catalog. Cross-check against known-good secret stores.
 
-### 5. Terraform (Optional)
+- **L3 Decision + Remediation**  
+  GhostClaw / 47 Ronin decision layer. Default: Issue + PR. Critical: human approval gate + optional emergency rotation (n8n) after approval.
 
-```bash
-cd terraform
-terraform init
-terraform plan   # review
-# terraform apply  # only after human review
-```
+- **Orchestration**  
+  n8n (daily/hourly) + GitHub webhooks + agent swarm (a2a live dispatch). Dashboard module inside Pixel AI Office / mission-control.
 
-Declares secret-scanning enablement, alerting sinks, and optional scanner runners.
+All findings store **only fingerprints / metadata**. Raw secret values are never persisted in agent memory, logs, Obsidian, or R2.
 
-### 6. n8n Orchestration
+## Integration with Existing SIRINX Stack
 
-Import `n8n/secret-recon-orchestrator.json` into your n8n instance.  
-Schedule: daily full + hourly high-risk paths.  
-Webhook path for GitHub events.
+| Component              | Role                                      |
+|------------------------|-------------------------------------------|
+| GhostClaw OS / a2a     | Findings become tasks for coding sub-agents or humans |
+| OmniRoute + catalog    | Best model for classification             |
+| Supabase / Redis / R2  | Finding metadata only                     |
+| Cloudflare Workers     | Lightweight webhook receivers (optional)  |
+| Pixel AI Office UI     | Surface open findings & remediation status|
+| Production gates       | dry-run → approval → quarantine           |
 
-### 7. Supabase Schema
+## Operating Procedure
 
-Run `supabase/schema.sql` against your operator-owned Supabase project.  
-Stores only fingerprints + metadata (never raw secrets).
+1. Confirm scope is strictly own assets.
+2. Prefer GitHub native alerts first.
+3. Fall back to local Gitleaks for custom patterns / full history.
+4. Feed redacted findings to L2 LLM classification.
+5. Route High/Critical through GhostClaw human gates.
+6. After remediation, re-scan to confirm clean.
+7. Never output or persist raw secret values.
 
-## Priority Repositories (from scan-scope)
+## Anti-Patterns (Forbidden)
 
-1. `sirinx-os` (private)
-2. `sirinx-co`
-3. `sirinx-skills-kit`
-4. `ghost-claw-os`
-5. `oz-corp-omega-dual-node`
-6. `hermes-os`
-7. `sirinx-solar-energy`
-8. All `automation-*` and remaining owned repos
-
-## Human Approval Gates
-
-Any action that:
-
-- Rotates a production key
-- Rewrites git history
-- Quarantines a live service
-
-**must** pass through GhostClaw council / Pixel AI Office approval channel.
-
-## Observability
-
-- Prometheus: `secrets_found_total`, `secrets_remediated_total`, `scan_duration_seconds`
-- OpenTelemetry: one span per scan job + child spans per finding
-- Dashboard: severity pie + open findings table + last-scan timestamp
-
-## Forbidden Actions
-
-- Public GitHub search for usable third-party keys (`OPENAI_API_KEY`, etc.)
-- Persisting raw secret values anywhere outside a secrets manager
-- Auto-rotation without explicit human sign-off
+- Searching `OPENAI_API_KEY` (or equivalent) across public GitHub with intent to use found keys.
+- Storing or transmitting raw secrets in agent context, chat, or non-secret stores.
+- Auto-rotating production keys without explicit human approval.
+- Scanning third-party repositories or customer environments without written authorization.
 
 ---
 
-**Built from redteam-secret-recon skill · Integrated with GhostClaw OS, OmniRoute, SIRINX pipeline.**
+**Built for GhostClaw OS · SIRINX · OZ-CORP**  
+Defensive security hygiene only.
