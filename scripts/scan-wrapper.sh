@@ -5,7 +5,6 @@
 
 set -euo pipefail
 
-SCOPE_FILE="$(dirname "$0")/../references/scan-scope-and-tools.md"
 CONFIG="$(dirname "$0")/gitleaks.toml"
 REPORT_DIR="${REPORT_DIR:-/tmp/secret-recon-reports}"
 mkdir -p "$REPORT_DIR"
@@ -20,48 +19,59 @@ echo "Report dir: $REPORT_DIR"
 echo "Safety: Own assets only. Never scan third-party."
 
 if ! command -v gitleaks >/dev/null 2>&1; then
-  echo "ERROR: gitleaks not installed. Install via: brew install gitleaks  or  go install github.com/gitleaks/gitleaks/v8@latest"
-  exit 1
+  echo "ERROR: gitleaks is not installed."
+  exit 2
 fi
 
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 REPORT_JSON="$REPORT_DIR/findings-$TIMESTAMP.json"
 REPORT_SARIF="$REPORT_DIR/findings-$TIMESTAMP.sarif"
 
-GITLEAKS_ARGS=(
-  detect
-  --source "$TARGET"
-  --config "$CONFIG"
-  --report-format json
-  --report-path "$REPORT_JSON"
-  --no-banner
-  --redact
-)
+run_report() {
+  local format="$1"
+  local output="$2"
+  local -a args=(
+    detect
+    --source "$TARGET"
+    --config "$CONFIG"
+    --report-format "$format"
+    --report-path "$output"
+    --no-banner
+    --redact
+  )
 
-if [[ "$FULL_HISTORY" == "--full-history" ]]; then
-  GITLEAKS_ARGS+=(--log-opts="--all")
-fi
+  if [[ "$FULL_HISTORY" == "--full-history" ]]; then
+    args+=(--log-opts="--all")
+  fi
 
-echo "Running gitleaks..."
-gitleaks "${GITLEAKS_ARGS[@]}" || true
+  set +e
+  gitleaks "${args[@]}"
+  local status=$?
+  set -e
+  return "$status"
+}
 
-# Also produce SARIF for GitHub Code Scanning integration if needed
-gitleaks detect \
-  --source "$TARGET" \
-  --config "$CONFIG" \
-  --report-format sarif \
-  --report-path "$REPORT_SARIF" \
-  --no-banner \
-  --redact || true
+echo "Running redacted JSON scan..."
+JSON_STATUS=0
+run_report json "$REPORT_JSON" || JSON_STATUS=$?
 
-echo ""
+echo "Running redacted SARIF scan..."
+SARIF_STATUS=0
+run_report sarif "$REPORT_SARIF" || SARIF_STATUS=$?
+
+echo
 echo "=== Scan complete ==="
 echo "JSON report: $REPORT_JSON"
 echo "SARIF report: $REPORT_SARIF"
-echo ""
-echo "Next steps (per skill):"
-echo "1. Feed findings to L2 Analysis Agents (OmniRoute classification)"
-echo "2. Queue Critical/High into GhostClaw decision layer"
-echo "3. Create Issues/PRs for remediation (never auto-rotate without approval)"
-echo "4. Re-scan after remediation"
-echo "5. Mask all secret values in logs/dashboard"
+
+# Fail closed. The previous wrapper swallowed every Gitleaks non-zero exit via
+# `|| true`, which could make a scan with findings look successful to callers.
+# Preserve non-zero status so CI/orchestration can stop the phase gate.
+if (( JSON_STATUS != 0 || SARIF_STATUS != 0 )); then
+  echo "RESULT: BLOCKED — Gitleaks returned a non-zero status."
+  echo "Review only the redacted reports; never copy raw secret values into logs or chat."
+  exit 1
+fi
+
+echo "RESULT: CLEAN — both redacted scans completed successfully."
+echo "Next: continue the phase only after the independent literal-prefix gate and build/test checks pass."
