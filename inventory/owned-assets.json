@@ -1,5 +1,44 @@
 {
   "owner": "ton36475-lgtm",
-  "verified_at": "2026-08-27T04:08:00+07:00",
-  "policy": "scan_own_assets_only"
+  "scanned_at": "2026-08-27T04:05:00Z",
+  "policy": "own-assets-only",
+  "priority": [
+    "sirinx-os",
+    "sirinx-co",
+    "ghost-claw-os",
+    "hermes-os",
+    "sirinx-skills-kit",
+    "oz-corp-omega-dual-node",
+    "sirinx-solar-energy",
+    "sirinx-sovereign-swarm",
+    "automation-system-backend",
+    "automation-dashboard",
+    "sirinx-secret-recon"
+  ],
+  "repositories": [
+    {"name": "sirinx-secret-recon", "visibility": "public", "secret_scanning": "disabled"},
+    {"name": "automated-marketing-agency", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx-co", "visibility": "public", "secret_scanning": "disabled"},
+    {"name": "sirinx-skills-kit", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx-os", "visibility": "public", "secret_scanning": "disabled"},
+    {"name": "hermes-os", "visibility": "private", "secret_scanning": "unknown"},
+    {"name": "oz-corp-omega-dual-node", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "automation-mobile-app", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx-solar-energy", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "automation-system-backend", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "unknowcoding-newbie-dev-skill", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "oz_mobile_app", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx-sovereign-swarm", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "chokma-growth-os", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "automation-dashboard", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "ghost-claw-os", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "sirinx-godmode", "visibility": "public", "secret_scanning": "unknown"},
+    {"name": "automation-documentation", "visibility": "public", "secret_scanning": "unknown"}
+  ],
+  "non_targets": [
+    "third-party public GitHub code search for usable keys",
+    "customer or partner repositories without written authorization",
+    "Pastebin / Telegram / open web key dumps"
+  ]
 }

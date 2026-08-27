@@ -1,14 +1,25 @@
-# แผนปฏิบัติงาน — Secret Recon นำ skill มาทำงาน
+# Operation Plan — put the system to work
 
-วันที่: 2026-08-27  
-ขอบเขต: `ton36475-lgtm` เท่านั้น  
-โหมดเริ่มต้น: **dry-run**
+Date: 2026-08-27
+Mode: dry-run default
+Owner: ton36475-lgtm
 
-## 0. นโยบายที่ต้องยอมรับก่อนรัน
+## Done
 
-1. สแกนเฉพาะ asset ของเรา
-2. ไม่เก็บ raw secret
-3. Critical ต้องผ่าน GhostClaw human gate
-4. ห้าม harvest คีย์บุคคลที่สาม
+- Confirmed GitHub identity ton36475-lgtm
+- Inventoried 19 owned repositories
+- Rejected public third-party key harvest
 
-ถ้าคำสั่งจากแชทขัดกับข้อ 1–4 ให้ปฏิเสธและชี้กลับมาที่แผนนี้
+## Today
+
+1. Enable Secret scanning + Push protection on priority repos
+2. Copy `.github/workflows/secret-scan.yml` and `.gitleaks.toml`
+3. Install pre-commit hook on developer machines
+4. Apply `supabase/schema.sql`
+5. Import n8n workflows
+
+## Definition of Done
+
+- Native scanning on for priority repos
+- Findings stored as fingerprints only
+- Human approval required before production key rotation
