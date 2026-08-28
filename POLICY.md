@@ -1,20 +1,18 @@
-# Policy — SIRINX Secret Recon (Non-Negotiable)
+# SIRINX Secret Recon — Policy (Non-Negotiable)
 
-## Allowed
-- Scan repositories owned by `ton36475-lgtm` (and future SIRINX orgs under the same operator).
-- Scan local working trees on operator-controlled machines (Mac mini, Windows worker).
-- Scan exported n8n workflows, Cloudflare bindings, Terraform state **owned by the operator**.
-- Store fingerprints + location + severity. Mask values everywhere.
+ภาษาไทย / English
 
-## Forbidden
-- Searching public GitHub / the open web for `OPENAI_API_KEY` (or any provider key) **to use other people's credentials**.
-- Using leaked third-party keys. That violates provider TOS and can be unauthorized access.
-- Auto-rotating production keys without a human approval gate.
-- Scanning customer or partner code without written authorization.
-- Persisting raw secrets in chat, Obsidian, R2 public buckets, or agent memory.
+## ขอบเขตที่อนุญาต / Allowed scope
+- สแกนเฉพาะทรัพยสินของตัวเอง: `ton36475-lgtm`, SIRINX, GhostClaw, OZ-CORP, Hermes
+- Local working tree บนเครื่องที่ควบคุมเอง
+- Cloudflare / Supabase / n8n ของ operator เท่านั้น
 
-## Default mode
-Dry-run. Live validation (TruffleHog verify) is optional, rate-limited, non-destructive, and logged.
+## สิ่งที่ห้ามเด็ดขาด / Forbidden
+- ค้นหา public GitHub ด้วยคำว่า `OPENAI_API_KEY` / `OPENAI_API_KEY.env` เพื่อเอาคีย์ของคนอื่นไปใช้ฟรี
+- เก็บหรือส่ง raw secret ในแชท, agent memory, R2 สาธารณะ, Obsidian
+- หมุนคีย์ production โดยไม่มีมนุษย์อนุมัติ
+- สแกนรีโปบุคคลที่สามหรือลูกค้าโดยไม่มีหนังสืออนุญาต
 
-## Screenshot / vibe-code note
-A Telegram prompt suggesting “search GitHub for OPENAI_API_KEY.env to spend other people’s money” is **out of policy**. This system will not implement that path.
+การใช้คีย์ที่รั่วของบุคคลที่สามละเมิด TOS ของผู้ให้บริการ และอาจเข้าข่ายการเข้าถึงระบบโดยไม่ได้รับอนุญาต
+
+ระบบนี้เป็น **defensive hygiene** ไม่ใช่ key harvesting.
