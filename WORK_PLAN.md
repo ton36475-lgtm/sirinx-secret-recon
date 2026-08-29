@@ -1,15 +1,16 @@
-# Work plan — operate from redteam skill (2026-08-29)
+# Work plan — operate Secret Recon from redteam skill
+
+Generated 2026-08-29 11:12 +07. Scope: own assets only.
 
 ## Done this session
-- Read skill + references + scripts
-- Confirm operator `ton36475-lgtm`
-- Reject public key-harvest path from Telegram screenshots
-- L1 live scan (GHAS + owned code search)
-- L2 classify `.env.example` as Low/placeholder
-- Rebuild downloadable system package
 
-## Blocked on human
-- Enable Secret scanning + Push protection fleet-wide
-- Copy workflow + `.gitleaks.toml` into sirinx-os / sirinx-co / ghost-claw-os / hermes-os
-- Apply Supabase schema
-- Import n8n orchestrator (dry-run)
+1. Loaded redteam-secret-recon skill.
+2. Authenticated as ton36475-lgtm. Listed 19 owned repositories.
+3. GHAS disabled on sirinx-os, sirinx-co, sirinx-secret-recon.
+4. Scoped code search on user:ton36475-lgtm only — 0 hits.
+5. Refreshed Terraform, n8n, Supabase, dashboard, agents, CF Computer + AWS toolkit integrations.
+6. Refused public GitHub key harvesting.
+
+## Open P0
+
+Enable Secret scanning + Push protection on priority repos. Human gate. Tracked by issues #1–#12.
