@@ -1,8 +1,23 @@
 {
   "owner": "ton36475-lgtm",
-  "scanned_at": "2026-08-30T21:01:00Z",
-  "local_time": "2026-08-31T04:01:00+07:00",
+  "scanned_at": "2026-08-30T22:11:00Z",
+  "local_time": "2026-08-31T05:11:00+07:00",
   "policy": "own-assets-only",
-  "total_repos": 19,
-  "priority": ["sirinx-os", "sirinx-co", "ghost-claw-os", "hermes-os", "sirinx-skills-kit", "oz-corp-omega-dual-node", "sirinx-solar-energy", "sirinx-sovereign-swarm", "automation-system-backend", "automation-dashboard", "sirinx-secret-recon"]
+  "operator": "Godzfath3r",
+  "total_repos_visible": 19,
+  "github_secret_scanning": "disabled_on_checked_repos",
+  "priority": [
+    "sirinx-os",
+    "sirinx-co",
+    "ghost-claw-os",
+    "hermes-os",
+    "sirinx-skills-kit",
+    "oz-corp-omega-dual-node",
+    "sirinx-solar-energy",
+    "sirinx-sovereign-swarm",
+    "automation-system-backend",
+    "automation-dashboard",
+    "sirinx-secret-recon",
+    "automated-marketing-agency"
+  ]
 }
