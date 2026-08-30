@@ -1,16 +1,7 @@
-# Work plan — operate Secret Recon from redteam skill
+# Work plan — operate redteam-secret-recon
 
-Generated 2026-08-30 05:12 +07. Scope: own assets only.
+Status: OPERATE (dry-run) · 2026-08-30 09:05 +07
+Owner: ton36475-lgtm · 19 repos
 
-## Done this session
-
-1. Loaded redteam-secret-recon skill.
-2. Authenticated as ton36475-lgtm. Listed 19 owned repositories.
-3. GHAS disabled on sirinx-os, sirinx-co, sirinx-secret-recon, ghost-claw-os.
-4. Scoped code search on user:ton36475-lgtm only — no live-shaped keys.
-5. Classified llm.ts OPENAI_API_KEY hits as Low/info.
-6. Packaged zip + refused public GitHub key harvesting.
-
-## Open P0
-
-Enable Secret scanning + Push protection on priority repos. Human gate. Tracked by issues #1–#12.
+Highest open item: enable GitHub Secret Scanning + Push Protection fleet-wide.
+Forbidden: public GitHub harvest of OPENAI_API_KEY.env

@@ -2,11 +2,30 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SIRINX · Secret Recon Mission Control</title>
+  <style>
+    :root { --bg:#07080f; --panel:#10131f; --line:#2a3148; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --muted:#93a0c0; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:#07080f; color:#e8ecff; }
+    header { padding:28px 32px 12px; border-bottom:1px solid var(--line); }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:20px 32px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+    .v { font-size:28px; margin-top:8px; font-weight:700; }
+    .ok { color:var(--ok);} .bad { color:var(--bad);} .warn { color:var(--warn);} 
+    table { width:calc(100% - 64px); margin:0 32px 32px; border-collapse:collapse; }
+    th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); font-size:13px; }
+    .banner { margin:16px 32px 0; padding:12px 14px; border:1px solid #5b2a2a; background:#1a0d12; color:#fecaca; border-radius:10px; }
+  </style>
 </head>
 <body>
-  <h1>SECRET RECON</h1>
-  <p>Defensive API-key reconnaissance · owner ton36475-lgtm · live production keys found: 0 · GHAS enabled: 0</p>
-  <p>Raw secret values are never stored. Human approval required before any key rotation.</p>
+  <header><h1>SECRET RECON · PIXEL AI OFFICE</h1></header>
+  <div class="banner">Own assets only. No third-party key harvest. Raw secrets never stored.</div>
+  <div class="grid">
+    <div class="card">Live production keys<div class="v ok">0</div></div>
+    <div class="card">GHAS enabled<div class="v bad">0 / 19</div></div>
+    <div class="card">Name-only hits<div class="v warn">2</div></div>
+    <div class="card">Human gates open<div class="v">1</div></div>
+  </div>
 </body>
 </html>
