@@ -1,6 +1,8 @@
 {
   "owner": "ton36475-lgtm",
-  "scanned_at": "2026-08-30T16:10:00Z",
+  "scanned_at": "2026-08-30T21:01:00Z",
+  "local_time": "2026-08-31T04:01:00+07:00",
   "policy": "own-assets-only",
+  "total_repos": 19,
   "priority": ["sirinx-os", "sirinx-co", "ghost-claw-os", "hermes-os", "sirinx-skills-kit", "oz-corp-omega-dual-node", "sirinx-solar-energy", "sirinx-sovereign-swarm", "automation-system-backend", "automation-dashboard", "sirinx-secret-recon"]
 }
