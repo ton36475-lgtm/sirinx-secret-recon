@@ -1,11 +1,12 @@
 {
   "owner": "ton36475-lgtm",
-  "scanned_at": "2026-08-30T22:11:00Z",
-  "local_time": "2026-08-31T05:11:00+07:00",
+  "scanned_at": "2026-08-31T06:04:00Z",
+  "local_time": "2026-08-31T13:04:00+07:00",
   "policy": "own-assets-only",
   "operator": "Godzfath3r",
   "total_repos_visible": 19,
-  "github_secret_scanning": "disabled_on_checked_repos",
+  "github_secret_scanning": "disabled_on_most_checked_repos",
+  "ghas_enabled": ["sirinx-skills-kit"],
   "priority": [
     "sirinx-os",
     "sirinx-co",
