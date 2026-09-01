@@ -1,20 +1,21 @@
-# Work plan — operate redteam-secret-recon
+# Work plan — Secret Recon operate 2026-09-01
 
-Status: OPERATE (dry-run) · 2026-08-30 22:01 +07  
-Owner: ton36475-lgtm · 19 public + 1 private (`hermes-os`) repos  
-Repo of record: https://github.com/ton36475-lgtm/sirinx-secret-recon
+Built from skill `redteam-secret-recon`. Combined L1/L2/L3 agent outputs.
 
-## This session (from skill)
+## Done this session
+- [x] Confirm operator identity `ton36475-lgtm`
+- [x] Re-run defensive L1 on owned public trees
+- [x] Classify `.env.example` as Low / placeholder
+- [x] Refuse public GitHub key-harvest request from Telegram screenshots
+- [x] Produce downloadable zip of the full system package
 
-1. Load `redteam-secret-recon` skill and confirm own-assets-only policy.
-2. Inventory owned GitHub account (`ton36475-lgtm`).
-3. Probe GitHub Secret Scanning on priority repos — **still DISABLED** (404).
-4. Owner-scoped code search for committed `.env` / `.env.local` — **0 hits**.
-5. Refuse public harvest of `OPENAI_API_KEY` (blocked by POLICY.md).
-6. Rebuild runnable package (orchestrator, GHAS checker, terraform, n8n, supabase, dashboard).
-7. Local L1 scan of the package + skill tree (redacted) — 0 findings.
-8. Zip for download.
+## Blocked on human
+- [ ] Enable GHAS secret scanning + push protection (UI, all owned repos)
+- [ ] Roll workflow + gitleaks config to remaining repos
+- [ ] Deploy Supabase schema + n8n dry-run
+- [ ] Local Gitleaks full-history scan on Mac mini / Windows worker
 
-## Highest open item
-
-Enable GitHub Secret Scanning + Push Protection fleet-wide.
+## Never
+- Public `OPENAI_API_KEY` / `.env` harvesting
+- Auto-rotate production keys without approval
+- Store raw secrets in chat, wiki, or R2
