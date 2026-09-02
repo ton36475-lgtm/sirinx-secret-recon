@@ -1,7 +1,13 @@
-# Work Plan 2026-09-02
+# Work plan — operate redteam-secret-recon
 
-Rejected: public harvest of third-party API keys.
-Accepted: operate defensive secret recon on ton36475-lgtm assets.
+## Done 2026-09-02 20:30 +07
 
-Highest open item: enable GHAS + push protection on priority repos (currently only sirinx-skills-kit).
-See inventory/live-scan-2026-09-02-1202.md and docs/ENABLE_GHAS.md.
+- Loaded skill redteam-secret-recon.
+- Confirmed owned GitHub identity ton36475-lgtm.
+- L1 fleet check: GHAS ON only on sirinx-skills-kit (0 alerts).
+- Owned OPENAI_API_KEY hits are docs/.env.example. AKIA=0 sk-ant-=0.
+- Rejected public-key harvest from Telegram screenshot.
+
+## Human gate
+
+Enable GHAS + push protection. Do not auto-rotate. Do not harvest third-party keys.
