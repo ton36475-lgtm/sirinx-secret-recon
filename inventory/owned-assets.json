@@ -1,8 +1,8 @@
 {
   "owner": "ton36475-lgtm",
   "operator": "Godzfath3r",
-  "scanned_at": "2026-09-01T21:14:00Z",
-  "local_time": "2026-09-02T04:14:00+07:00",
+  "scanned_at": "2026-09-02T17:11:00Z",
+  "local_time": "2026-09-03T00:11:00+07:00",
   "policy": "own-assets-only",
   "total_repos_visible": 19,
   "ghas_enabled": ["sirinx-skills-kit"],
