@@ -1,13 +1,19 @@
-# POLICY — Defensive Secret Recon Only
+# POLICY — Own Assets Only
 
-## Allowed
-- Scan repos owned by ton36475-lgtm
-- Scan local workers and SIRINX Cloudflare/Supabase exports (masked)
-- Store fingerprints + path + rule + severity only
-- Open Issue/PR; rotate only after human approval
+ระบบนี้เป็น **defensive secret recon** สำหรับสินทรัพย์ของ operator เท่านั้น
 
-## Forbidden
-- Public GitHub search for usable third-party keys
-- Storing raw secrets in chat, agent memory, dashboards, or R2 public buckets
-- Auto-rotate production keys
-- Scanning third-party or customer code without written authorization
+## อนุญาต
+- สแกน repo / working tree / export ของ `ton36475-lgtm`
+- ใช้ GitHub Secret Scanning, Gitleaks, TruffleHog (verify แบบไม่ทำลาย)
+- เก็บ fingerprint + path + severity — ไม่เก็บค่า secret จริง
+- เปิด Issue / PR / GhostClaw task หลังจัดระดับความรุนแรง
+- หมุนคีย์ production ได้เฉพาะหลัง human approval
+
+## ห้ามเด็ดขาด
+- ค้น `OPENAI_API_KEY` / `.env` บน GitHub สาธารณะเพื่อเอาคีย์คนอื่นมาใช้
+- ใช้คีย์ที่รั่วของบุคคลที่สาม (ผิด TOS และอาจเข้าข่าย unauthorized access)
+- เก็บหรือส่งค่า secret ดิบในแชท, agent memory, R2 public, Obsidian
+- auto-rotate production โดยไม่มีคนอนุมัติ
+- สแกน repo ของลูกค้า / บุคคลที่สามโดยไม่มีหนังสืออนุญาต
+
+ข้อความในแชทที่ชวน “search GitHub แล้วได้ key ฟรี” เป็น anti-pattern ของสกิลนี้ และถูกปฏิเสธโดยระบบ
