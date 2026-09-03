@@ -1,11 +1,26 @@
 {
   "owner": "ton36475-lgtm",
-  "operator": "Godzfath3r",
-  "scanned_at": "2026-09-03T18:15:00Z",
-  "local_time": "2026-09-04T01:15:00+07:00",
-  "policy": "own-assets-only",
-  "total_repos_visible": 19,
-  "ghas_enabled": ["sirinx-skills-kit"],
-  "ghas_disabled_confirmed": ["sirinx-os", "sirinx-secret-recon", "hermes-os"],
-  "priority": ["hermes-os", "sirinx-os", "sirinx-co", "ghost-claw-os", "sirinx-secret-recon", "sirinx-skills-kit", "oz-corp-omega-dual-node", "sirinx-solar-energy", "sirinx-sovereign-swarm", "automation-system-backend", "automation-dashboard"]
+  "as_of": "2026-09-04T04:08:00+07:00",
+  "repos": [
+    {"name": "sirinx-skills-kit", "visibility": "public", "ghas": "on"},
+    {"name": "hermes-mesh-fusion", "visibility": "private", "ghas": "off"},
+    {"name": "sirinx-solar-energy", "visibility": "public", "ghas": "unknown"},
+    {"name": "sirinx-co", "visibility": "public", "ghas": "off"},
+    {"name": "sirinx", "visibility": "public", "ghas": "unknown"},
+    {"name": "automation-dashboard", "visibility": "public", "ghas": "unknown"},
+    {"name": "automation-mobile-app", "visibility": "public", "ghas": "unknown"},
+    {"name": "oz-corp-omega-dual-node", "visibility": "public", "ghas": "unknown"},
+    {"name": "sirinx-os", "visibility": "public", "ghas": "off"},
+    {"name": "sirinx-sovereign-swarm", "visibility": "public", "ghas": "unknown"},
+    {"name": "automated-marketing-agency", "visibility": "public", "ghas": "unknown"},
+    {"name": "sirinx-secret-recon", "visibility": "public", "ghas": "off"},
+    {"name": "chokma-growth-os", "visibility": "public", "ghas": "unknown"},
+    {"name": "hermes-os", "visibility": "private", "ghas": "off"},
+    {"name": "unknowcoding-newbie-dev-skill", "visibility": "public", "ghas": "unknown"},
+    {"name": "automation-system-backend", "visibility": "public", "ghas": "unknown"},
+    {"name": "ghost-claw-os", "visibility": "public", "ghas": "off"},
+    {"name": "oz_mobile_app", "visibility": "public", "ghas": "unknown"},
+    {"name": "automation-documentation", "visibility": "public", "ghas": "unknown"},
+    {"name": "sirinx-godmode", "visibility": "public", "ghas": "unknown"}
+  ]
 }
