@@ -1,28 +1,10 @@
 {
   "owner": "ton36475-lgtm",
-  "as_of": "2026-09-04T07:14:00+07:00",
+  "as_of": "2026-09-04T09:07:00+07:00",
   "policy": "own-assets-only",
   "p0": ["hermes-mesh-fusion", "sirinx-co", "sirinx-os", "sirinx-secret-recon", "hermes-os", "ghost-claw-os", "sirinx-skills-kit"],
-  "repos": [
-    {"name": "sirinx-skills-kit", "visibility": "public", "ghas": "on", "priority": 1, "alerts_open": 0},
-    {"name": "hermes-mesh-fusion", "visibility": "private", "ghas": "unknown", "priority": 1},
-    {"name": "sirinx-solar-energy", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "sirinx-co", "visibility": "public", "ghas": "off", "priority": 1},
-    {"name": "sirinx", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "automation-dashboard", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "automation-mobile-app", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "oz-corp-omega-dual-node", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "sirinx-os", "visibility": "public", "ghas": "off", "priority": 1},
-    {"name": "sirinx-sovereign-swarm", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "automated-marketing-agency", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "sirinx-secret-recon", "visibility": "public", "ghas": "off", "priority": 1},
-    {"name": "chokma-growth-os", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "hermes-os", "visibility": "private", "ghas": "off", "priority": 1},
-    {"name": "unknowcoding-newbie-dev-skill", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "automation-system-backend", "visibility": "public", "ghas": "unknown", "priority": 2},
-    {"name": "ghost-claw-os", "visibility": "public", "ghas": "off", "priority": 1},
-    {"name": "oz_mobile_app", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "automation-documentation", "visibility": "public", "ghas": "unknown", "priority": 3},
-    {"name": "sirinx-godmode", "visibility": "public", "ghas": "unknown", "priority": 3}
-  ]
+  "ghas": {
+    "on": ["sirinx-skills-kit"],
+    "off": ["sirinx-secret-recon", "sirinx-co", "sirinx-os", "ghost-claw-os", "hermes-os", "hermes-mesh-fusion", "sirinx-solar-energy"]
+  }
 }
