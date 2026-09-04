@@ -1,25 +1,27 @@
 {
   "owner": "ton36475-lgtm",
-  "as_of": "2026-09-04T18:14:00+07:00",
+  "collected_at": "2026-09-04T15:22:00Z",
   "policy": "own-assets-only",
-  "p0": [
-    "hermes-mesh-fusion",
-    "hermes-os",
-    "sirinx-os",
-    "sirinx-secret-recon",
-    "ghost-claw-os",
-    "sirinx-co",
-    "sirinx-skills-kit"
-  ],
-  "ghas": {
-    "on": ["sirinx-skills-kit"],
-    "off": [
-      "sirinx-secret-recon",
-      "sirinx-co",
-      "sirinx-os",
-      "ghost-claw-os",
-      "hermes-os",
-      "hermes-mesh-fusion"
-    ]
-  }
+  "repositories": [
+    {"name": "sirinx-secret-recon", "private": false, "priority": 1},
+    {"name": "hermes-mesh-fusion", "private": true, "priority": 1},
+    {"name": "hermes-os", "private": true, "priority": 1},
+    {"name": "sirinx-os", "private": false, "priority": 1},
+    {"name": "ghost-claw-os", "private": false, "priority": 1},
+    {"name": "sirinx-co", "private": false, "priority": 1},
+    {"name": "sirinx-skills-kit", "private": false, "priority": 1},
+    {"name": "oz-corp-omega-dual-node", "private": false, "priority": 2},
+    {"name": "sirinx-sovereign-swarm", "private": false, "priority": 2},
+    {"name": "sirinx-godmode", "private": false, "priority": 2},
+    {"name": "automated-marketing-agency", "private": false, "priority": 3},
+    {"name": "automation-mobile-app", "private": false, "priority": 3},
+    {"name": "automation-system-backend", "private": false, "priority": 3},
+    {"name": "automation-dashboard", "private": false, "priority": 3},
+    {"name": "automation-documentation", "private": false, "priority": 3},
+    {"name": "sirinx-solar-energy", "private": false, "priority": 3},
+    {"name": "oz_mobile_app", "private": false, "priority": 3},
+    {"name": "chokma-growth-os", "private": false, "priority": 3},
+    {"name": "sirinx", "private": false, "priority": 3},
+    {"name": "unknowcoding-newbie-dev-skill", "private": false, "priority": 4}
+  ]
 }
