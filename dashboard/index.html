@@ -4,12 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SIRINX · Secret Recon Mission Control</title>
+  <style>
+    :root {
+      --bg: #05060c;
+      --panel: rgba(10, 16, 32, 0.82);
+      --line: rgba(80, 255, 230, 0.22);
+      --cyan: #6cf3ff;
+      --ok: #3dff9a;
+      --warn: #ffd36c;
+      --crit: #ff5d7a;
+      --text: #e8f4ff;
+      --muted: #8aa0b8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "IBM Plex Sans Thai", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(108, 243, 255, 0.08), transparent 50%),
+        radial-gradient(900px 500px at 100% 0%, rgba(179, 136, 255, 0.12), transparent 45%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    header, main { max-width: 1180px; margin: 0 auto; padding: 28px 22px; }
+    .kicker { letter-spacing: .22em; color: var(--cyan); font-size: 11px; }
+    h1 { margin: 8px 0 4px; font-weight: 650; font-size: 28px; }
+    .sub { color: var(--muted); margin-bottom: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+    .metric { font-size: 32px; font-weight: 700; }
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+    .crit { color: var(--crit); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; }
+    .pill { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; border: 1px solid currentColor; }
+    footer { color: var(--muted); font-size: 12px; margin-top: 22px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  </style>
 </head>
-<body style="margin:0;font-family:Segoe UI,sans-serif;background:#05060c;color:#e8f4ff;padding:28px;">
-  <p style="letter-spacing:.18em;color:#6cf3ff;font-size:12px;">SIRINX · GHOSTCLAW · PIXEL AI OFFICE</p>
-  <h1>Secret Recon Mission Control</h1>
-  <p>DRY-RUN · OWN ASSETS ONLY</p>
-  <p>Live keys found: <strong>0</strong> · Name hits: 8 · GHAS enabled: 1/20 · Highest finding: control gap</p>
-  <p>Policy: scan owned assets only. Never store raw secrets. Never harvest third-party keys from public GitHub.</p>
+<body>
+  <header>
+    <div class="kicker">SIRINX · GHOSTCLAW · PIXEL AI OFFICE</div>
+    <h1>Secret Recon Mission Control</h1>
+    <p class="sub">DRY-RUN · OWN ASSETS ONLY · operator ton36475-lgtm · scan 2026-09-04 12:03 +07</p>
+    <div class="grid">
+      <div class="card"><h3>Live keys</h3><div class="metric ok">0</div></div>
+      <div class="card"><h3>Name hits</h3><div class="metric warn">8</div></div>
+      <div class="card"><h3>GHAS enabled</h3><div class="metric warn">1 / 20</div></div>
+      <div class="card"><h3>Highest finding</h3><div class="metric crit">control gap</div></div>
+    </div>
+  </header>
+  <main>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Policy</h3>
+      <p>Scan owned assets only. Never store raw secrets. Never harvest third-party keys from public GitHub.</p>
+    </div>
+    <div class="card">
+      <h3>P0 GitHub Secret Scanning</h3>
+      <table>
+        <thead><tr><th>Repo</th><th>GHAS</th><th>Open alerts</th></tr></thead>
+        <tbody>
+          <tr><td>sirinx-skills-kit</td><td><span class="pill ok">ON</span></td><td>0</td></tr>
+          <tr><td>sirinx-co / sirinx-os / sirinx-secret-recon</td><td><span class="pill crit">OFF</span></td><td>n/a</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>L1 → L2 → L3 GhostClaw human gate · raw values never stored in this UI</footer>
+  </main>
 </body>
 </html>
