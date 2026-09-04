@@ -1,13 +1,11 @@
-# Work plan — operate redteam-secret-recon
+# SIRINX Secret Recon — Work Plan (operate 2026-09-04 07:14 +07)
 
-## Done 2026-09-02 20:30 +07
+Skill source: `redteam-secret-recon`
+Operator: `ton36475-lgtm`
+Mode: dry-run · own-assets-only
 
-- Loaded skill redteam-secret-recon.
-- Confirmed owned GitHub identity ton36475-lgtm.
-- L1 fleet check: GHAS ON only on sirinx-skills-kit (0 alerts).
-- Owned OPENAI_API_KEY hits are docs/.env.example. AKIA=0 sk-ant-=0.
-- Rejected public-key harvest from Telegram screenshot.
+Accepted from Telegram: Terraform + zip + GhostClaw swarm + AWS toolkit notes + sirinx.co dashboard.
+Denied: public GitHub harvest of third-party OPENAI_API_KEY / .env files.
 
-## Human gate
-
-Enable GHAS + push protection. Do not auto-rotate. Do not harvest third-party keys.
+Highest finding this session: GHAS + push protection still off on most P0 repos.
+Live production-shaped keys in owned public index: 0.

@@ -1,10 +1,11 @@
 {
   "owner": "ton36475-lgtm",
-  "as_of": "2026-09-04T06:04:00+07:00",
+  "as_of": "2026-09-04T07:14:00+07:00",
   "policy": "own-assets-only",
+  "p0": ["hermes-mesh-fusion", "sirinx-co", "sirinx-os", "sirinx-secret-recon", "hermes-os", "ghost-claw-os", "sirinx-skills-kit"],
   "repos": [
-    {"name": "sirinx-skills-kit", "visibility": "public", "ghas": "on", "priority": 1},
-    {"name": "hermes-mesh-fusion", "visibility": "private", "ghas": "off", "priority": 1},
+    {"name": "sirinx-skills-kit", "visibility": "public", "ghas": "on", "priority": 1, "alerts_open": 0},
+    {"name": "hermes-mesh-fusion", "visibility": "private", "ghas": "unknown", "priority": 1},
     {"name": "sirinx-solar-energy", "visibility": "public", "ghas": "unknown", "priority": 2},
     {"name": "sirinx-co", "visibility": "public", "ghas": "off", "priority": 1},
     {"name": "sirinx", "visibility": "public", "ghas": "unknown", "priority": 2},
