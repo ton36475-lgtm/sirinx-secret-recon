@@ -1,9 +1,10 @@
-# Operation plan — 2026-09-04 10:05 +07
+# Operation plan — 2026-09-04 15:10 +07
 
-1. Design package from redteam-secret-recon skill. [done]
+1. Design / operate package from `redteam-secret-recon` skill. [done]
 2. Live L1 on owned GitHub (GHAS + scoped code search). [done]
-3. L2 classify placeholders as Low. [done]
-4. Reject public key harvest. [done]
-5. Persist inventory + zip. [done]
-6. Human: enable GHAS fleet-wide. [blocked on UI]
-7. Optional: import n8n orchestrator, apply supabase/schema.sql, mount dashboard module.
+3. Local L1 via `scripts/recon_engine.py` on skill + package. [done · 0 findings]
+4. L2 classify placeholders as Low. [done]
+5. Reject public key harvest from Telegram screenshots. [done]
+6. Persist inventory + downloadable zip. [done]
+7. Human: enable GHAS + push protection fleet-wide. [blocked on GitHub UI]
+8. Optional after approval: import n8n orchestrator, apply `supabase/schema.sql`, mount dashboard module, apply Terraform skeleton.
