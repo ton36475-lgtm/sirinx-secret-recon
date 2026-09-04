@@ -1,6 +1,6 @@
 {
   "owner": "ton36475-lgtm",
-  "as_of": "2026-09-04T09:07:00+07:00",
+  "as_of": "2026-09-04T09:13:00+07:00",
   "policy": "own-assets-only",
   "p0": ["hermes-mesh-fusion", "sirinx-co", "sirinx-os", "sirinx-secret-recon", "hermes-os", "ghost-claw-os", "sirinx-skills-kit"],
   "ghas": {
