@@ -1,6 +1,7 @@
-# Owned assets inventory (2026-09-05)
+# Owned assets inventory (2026-09-06)
 
-Priority order from skill `references/scan-scope-and-tools.md`.
+Priority from skill `references/scan-scope-and-tools.md`.
+GitHub identity confirmed: `ton36475-lgtm` (Godzfath3r).
 
 ## P0
 
