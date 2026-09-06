@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-09-07T01:13:00+07:00",
+  "scope": "ton36475-lgtm owned assets only",
+  "open_findings": [
+    {
+      "id": "F-GHAS-001",
+      "title": "GitHub secret scanning disabled on owned repos",
+      "severity": "high",
+      "classification": "control_gap",
+      "status": "open",
+      "fingerprint": null,
+      "remediation": "Enable GHAS secret scanning + push protection"
+    }
+  ],
+  "severity_distribution": {
+    "critical": 0,
+    "high": 1,
+    "medium": 0,
+    "low": 1
+  },
+  "raw_secrets_in_store": 0
+}
