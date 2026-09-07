@@ -1,6 +1,6 @@
 {
   "owner": "ton36475-lgtm",
-  "collected_at": "2026-09-04T15:22:00Z",
+  "collected_at": "2026-09-07T02:14:45Z",
   "policy": "own-assets-only",
   "repositories": [
     {"name": "sirinx-secret-recon", "private": false, "priority": 1},
