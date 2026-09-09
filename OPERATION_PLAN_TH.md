@@ -1,24 +1,18 @@
-# แผนปฏิบัติการ Secret Recon (ป้องกัน — สินทรัพย์ของตัวเองเท่านั้น)
+# แผนปฏิบัติการ Secret Recon (ภาษาไทย)
 
-สร้างจาก skill `redteam-secret-recon` สำหรับ GhostClaw / SIRINX  
-รอบนี้: 2026-09-09 05:20 +07
+ระบบนี้สร้างจากสกิล `redteam-secret-recon` เพื่อ **หาและปิดรอยรั่วของ API key ในสินทรัพย์ของตัวเองเท่านั้น**
 
-## สิ่งที่ระบบนี้ทำ
+## สิ่งที่ระบบทำ
 
-1. **L1 Scanner** — GitHub Secret Scanning + Gitleaks + `src/recon_engine.py`
-2. **L2 Classifier** — แยก true positive / placeholder / docs แล้วจัด severity
-3. **L3 Gate** — สร้าง Issue + รอคนอนุมัติก่อน rotate
-4. **Dashboard / n8n / Terraform / Supabase** — เก็บ metadata (ไม่เก็บค่า key จริง)
+1. สแกน repo / ไฟล์ / workflow / Terraform ของ `ton36475-lgtm`
+2. จัดระดับความรุนแรง (Critical / High / Medium / Low)
+3. ส่งงานให้ทีมย่อย GhostClaw (L1 สแกน, L2 จำแนก, L3 อนุมัติคน)
+4. เปิด Issue + PR ลบความลับ / ใส่ pre-commit / .gitignore
+5. เก็บแค่ลายนิ้วมือ (fingerprint) ไม่เก็บค่า key จริง
+6. รวมไฟล์งานทั้งหมดเป็น zip ให้ดาวน์โหลด
 
-## สิ่งที่ระบบนี้ห้ามทำ
+## สิ่งที่ระบบจะไม่ทำ
 
-- ค้น GitHub สาธารณหา `OPENAI_API_KEY.env` เพื่อเอา key ของคนอื่นไปใช้
-- เก็บ raw secret ในแชท / wiki / R2 public
-- auto-rotate production โดยไม่มี human approval
-- สแกน repo ของลูกค้าหรือบุคคลที่สามโดยไม่มีหนังสืออนุญาต
-
-## ผลสแกนสด 2026-09-09
-
-- Live production keys ในโค้ดสาธารณะของตัวเอง: **0**
-- GHAS ยังปิดทั้งกอง P0 ที่ตรวจ
-- `.env.example` เป็น placeholder — ระดับ Low
+- ค้น GitHub สาธารณะเพื่อเอา `OPENAI_API_KEY` ของคนอื่นมาใช้ฟรี
+- หมุน key โปรดักชันอัตโนมัติโดยไม่มีคนอนุมัติ
+- สแกนโค้ดลูกค้าหรือบุคคลที่สามโดยไม่มีหนังสืออนุญาต
