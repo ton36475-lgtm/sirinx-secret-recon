@@ -1,9 +1,17 @@
-# Enable GitHub Secret Scanning + Push Protection
+# Enable GitHub Secret Scanning (required)
 
-GHAS native alerts return 404 when the feature is off.
+Live check 2026-09-09 against owned repos:
 
-1. Open https://github.com/ton36475-lgtm/<repo>/settings/security_analysis
-2. Secret scanning → Enable
-3. Push protection → Enable
+- `ton36475-lgtm/sirinx-secret-recon` — Secret scanning **DISABLED** (API 404)
+- `ton36475-lgtm/sirinx-os` — Secret scanning **DISABLED**
+- `ton36475-lgtm/sirinx-co` — Secret scanning **DISABLED**
 
-Priority: sirinx-os, sirinx-co, ghost-claw-os, hermes-os, sirinx-skills-kit, oz-corp-omega-dual-node, sirinx-solar-energy, sirinx-sovereign-swarm, automation-system-backend, automation-dashboard, sirinx-secret-recon.
+## Operator steps (human)
+1. Open each owned repo → Settings → Code security and analysis
+2. Enable **Secret scanning**
+3. Enable **Push protection**
+4. Enable Dependabot alerts
+5. Copy `.github/workflows/secret-scan.yml` from this package
+6. Re-run `python3 -m secret_recon.cli .`
+
+Public-repo secret scanning is available on GitHub Free; private repos may need GHAS.
